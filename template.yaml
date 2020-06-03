@@ -12,7 +12,7 @@ Parameters:
     SenderEmail:
         Description: "Default recipient address for forwarding"
         Type: String
-        Default: "ammar@mydomain.codes"
+        Default: "YOUR-EMAIL"
 
 
     EmailBucketName:

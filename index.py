@@ -166,9 +166,6 @@ def cleanup(text):
     return text
 
 def lambda_handler(event, context):
-    # TODO implement
-    #print (event)
-    #event = {'Records': [{'eventVersion': '2.1', 'eventSource': 'aws:s3', 'awsRegion': 'us-east-1', 'eventTime': '2020-05-12T20:50:27.641Z', 'eventName': 'ObjectCreated:Put', 'userIdentity': {'principalId': 'AWS:AIDAIE26RTG3F45XIHQFI'}, 'requestParameters': {'sourceIPAddress': '10.123.229.19'}, 'responseElements': {'x-amz-request-id': 'D8A0C083E35E2B9B', 'x-amz-id-2': 'tL8Co1dL6m3U+q2N4LKrq+Roiyi7lYa4rauSXnFBQ53HEnv+P+8p5g1XAjx9fSOodvkvqvYqtvzrmCZ7t49XxgDO0amZMba5'}, 's3': {'s3SchemaVersion': '1.0', 'configurationId': '50d785ae-de56-4a5b-ab56-df89f489271a', 'bucket': {'name': 'ses-test-domain', 'ownerIdentity': {'principalId': 'A10JJTOXS7BE7Q'}, 'arn': 'arn:aws:s3:::ses-test-domain'}, 'object': {'key': 'cevh6j43orscmun5elp4qg6im99hr67kkq804f01', 'size': 4094, 'eTag': '555f4fbacd3c3045d84ecbab60054893', 'sequencer': '005EBB0C198B2FDC25'}}}]}
 
     s3 = boto3.client("s3")
     bucket = event["Records"][0]["s3"]["bucket"]["name"]
@@ -178,7 +175,6 @@ def lambda_handler(event, context):
     filename = str(file_obj["s3"]['object']['key'])
     #print("filename: ", filename)
     fileObj = s3.get_object(Bucket = bucket, Key=filename)
-    #print("file has been gotten!")
     msg = email.message_from_bytes(fileObj['Body'].read())
     #print(msg)
 
